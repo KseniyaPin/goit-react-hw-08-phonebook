@@ -13,13 +13,13 @@ const authSlice = createSlice({
 	initialState,
 	extraReducers: {
 		[register.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
+			state.user = action.payload?.user;
+			state.token = action.payload?.token;
 			state.isLoggedIn = true;
 		},
 		[logIn.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
+			state.user = action.payload?.user;
+			state.token = action.payload?.token;
 			state.isLoggedIn = true;
 		},
 		[logOut.fulfilled](state) {
@@ -31,7 +31,7 @@ const authSlice = createSlice({
 			state.isFetchingCurrentUser = true;
 		},
 		[fetchCurrentUser.fulfilled](state, action) {
-			state.user = action.payload;
+			state.user = action.payload?;
 			state.isLoggedIn = true;
 			state.isFetchingCurrentUser = false;
 		},
