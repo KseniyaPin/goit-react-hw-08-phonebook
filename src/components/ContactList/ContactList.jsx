@@ -3,23 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectContacts, selectFilter } from '../redux/selectors';
 import { fetchContacts, deleteContact } from '../redux/operations';
+// import {
+//   selectError,
+//   getIsLoggedIn,
+//   getIsFetchingCurrent
+// } from '../redux/selectors';
 
 import { Form } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
 import css from '../Form/Form.module.css';
-import {
-  selectError,
-  getIsLoggedIn,
-  // getIsFetchingCurrent
-} from '../redux/selectors';
 
 import { fetchCurrentUser} from '../redux/operations';
 
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const error = useSelector(selectError);
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  // const error = useSelector(selectError);
+  // const isLoggedIn = useSelector(getIsLoggedIn);
   // const isFetchingCurrentUser = useSelector(
   //   getIsFetchingCurrent,
   // );
@@ -51,12 +51,7 @@ export const ContactList = () => {
          <h2>Contacts</h2>
          <section className={css.sectionStyle}>
          <Filter />
-         {isLoggedIn && !error && <b>Loading contacts...</b>}
-         <ContactList />
-        </section>
-      </div>  
-        
-      <ul>
+        <ul>
         {visibleContacts.map(({ name, number, id }) => {
           return (
             <li key={id} id={id} onClick={handleDelete}>
@@ -65,8 +60,11 @@ export const ContactList = () => {
             </li>
           );
         })}
-      </ul>
-    
+         </ul>
+         {/* {isLoggedIn && !error && <b>Loading contacts...</b>} */}
+         {/* <ContactList /> */}
+        </section>
+      </div>     
     )
     </>
   );

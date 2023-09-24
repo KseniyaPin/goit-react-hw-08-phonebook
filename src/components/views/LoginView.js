@@ -39,7 +39,7 @@ export default function LoginView() {
 					Password
 					<input type='password' name="password" value={password} onChange={handleChange} />
 				</label>
-				<button type='submit'>Login</button>
+				<button type='submit'>Увійти</button>
 				</form>
 		</div>
 	)

@@ -17,8 +17,8 @@ const styles = {
 const HomeView = () => (
   <div style={styles.container}>
     <h1 style={styles.title}>
-      Hallo {' '}
-      <span role="img" aria-label="Иконка приветствия">
+      Привіт {' '}
+      <span role="img" aria-label="Іконка привітання">
         💁‍♀️ 
       </span>
     </h1>
