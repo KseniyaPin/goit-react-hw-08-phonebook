@@ -7,21 +7,26 @@ import { fetchContacts, deleteContact } from '../redux/operations';
 import { Form } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
 import css from '../Form/Form.module.css';
-import {getIsLoggedIn} from '../redux/selectors';
 import {
   selectError,
-  selectIsLoading,
-  getIsFetchingCurrent
+  getIsLoggedIn,
+  // getIsFetchingCurrent
 } from '../redux/selectors';
+
+import { fetchCurrentUser} from '../redux/operations';
 
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const isLoggedIn = useSelector(getIsLoggedIn);
-  const isFetchingCurrentUser = useSelector(
-    getIsFetchingCurrent,
-  );
+  // const isFetchingCurrentUser = useSelector(
+  //   getIsFetchingCurrent,
+  // );
+
+    useEffect(() => {
+      dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);

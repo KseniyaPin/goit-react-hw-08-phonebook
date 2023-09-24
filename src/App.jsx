@@ -16,11 +16,11 @@ import {ContactList} from './components/ContactList/ContactList.jsx';
 
 
 // import { fetchCurrentUser} from './components/redux/operations';
-import {
-  selectError,
-  selectIsLoading,
-  getIsFetchingCurrent
-} from './components/redux/selectors';
+// import {
+//   selectError,
+//   selectIsLoading,
+//   getIsFetchingCurrent
+// } from './components/redux/selectors';
 
 
 
@@ -37,9 +37,9 @@ import {
 
 export default function App() {
   // const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(
-    getIsFetchingCurrent,
-    );
+  // const isFetchingCurrentUser = useSelector(
+  //   getIsFetchingCurrent,
+  //   );
     
   // useEffect(() => {
   //     dispatch(fetchCurrentUser());
