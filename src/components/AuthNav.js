@@ -19,13 +19,13 @@ export default function AuthNav() {
 		<div>
 		<NavLink to='/register' 
 		style={styles.link}>
-			Регистрация
+			Реєстрація
 		</NavLink>
 
 		<NavLink 
 		to='/login' 
 		style={styles.link}>
-			Войти
+			Увійти
 		</NavLink>
 		
 		</div>
