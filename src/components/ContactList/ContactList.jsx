@@ -3,11 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectContacts, selectFilter } from '../redux/selectors';
 import { fetchContacts, deleteContact } from '../redux/operations';
-// import {
-//   selectError,
-//   getIsLoggedIn,
-//   getIsFetchingCurrent
-// } from '../redux/selectors';
 
 import { Form } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
@@ -18,21 +13,15 @@ import { fetchCurrentUser} from '../redux/operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  // const error = useSelector(selectError);
-  // const isLoggedIn = useSelector(getIsLoggedIn);
-  // const isFetchingCurrentUser = useSelector(
-  //   getIsFetchingCurrent,
-  // );
 
-    useEffect(() => {
+  useEffect(() => {
       dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
-  
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
    
