@@ -2,7 +2,67 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://64fadba1cb9c00518f7a49af.mockapi.io/api/hw7/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`; //Bearer - носитель
+    },
+    unset() {
+      axios.defaults.headers.common.Authorization = ''; //common - на все запросы ставит  заголовок Авторизации
+    }
+}
+
+export const register = createAsyncThunk('auth/register', async credentials => {
+  try {
+    const {data} = await axios.post('/users/signup', credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {}
+});
+
+export const logIn = createAsyncThunk('auth/login', async credentials => {try {
+  const {data} = await axios.post('/users/login', credentials);
+  token.set(data.token);
+  return data;
+} catch (error) {}
+});
+
+// После успешного логаута, удаляем токен из HTTP-заголовка
+export const logOut = createAsyncThunk('auth/logout', 
+async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    
+  }
+});
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      console.log('Токена нет, уходим из fetchCurrentUser');
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+          }
+  },
+);
+
+
+
+// Authorization: 'Bearer токен'
+
 
 //  createAsyncThunk() - первым аргументом она принимает тип экшена, а вторым функцию которая должна выполнить HTTP-запрос и вернуть промис с данными, которые станут значением payload. Она возвращает асинхронный генератор экшена (операцию), при запуске которого выполнится функция с кодом запроса.
 

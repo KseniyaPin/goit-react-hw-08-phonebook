@@ -4,8 +4,21 @@ import PropTypes from 'prop-types';
 import { selectContacts, selectFilter } from '../redux/selectors';
 import { fetchContacts, deleteContact } from '../redux/operations';
 
+import { Form } from '../Form/Form';
+import { Filter } from '../Filter/Filter';
+import css from '../Form/Form.module.css';
+import {getIsLoggedIn} from '../redux/selectors';
+import {
+  selectError,
+  selectIsLoading,
+  getIsFetchingCurrent
+} from '../redux/selectors';
+
+
 export const ContactList = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const isLoggedIn = useSelector(getIsLoggedIn);
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
@@ -21,6 +34,19 @@ export const ContactList = () => {
 
   return (
     <>
+    
+    !isFetchingCurrentUser &&  (
+      <div>
+         <h1>Phonebook</h1>
+         <Form />
+         <h2>Contacts</h2>
+         <section className={css.sectionStyle}>
+         <Filter />
+         {isLoggedIn && !error && <b>Loading contacts...</b>}
+         <ContactList />
+        </section>
+      </div>  
+        
       <ul>
         {visibleContacts.map(({ name, number, id }) => {
           return (
@@ -31,6 +57,8 @@ export const ContactList = () => {
           );
         })}
       </ul>
+    
+    )
     </>
   );
 };
