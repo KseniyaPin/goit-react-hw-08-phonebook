@@ -19,6 +19,10 @@ export const ContactList = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const isFetchingCurrentUser = useSelector(
+    getIsFetchingCurrent,
+  );
+
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
