@@ -13,22 +13,6 @@ import LoginView from './components/views/LoginView';
 import {ContactList} from './components/ContactList/ContactList.jsx';
 
 
-
-
-// import { fetchCurrentUser} from './components/redux/operations';
-// import {
-//   selectError,
-//   selectIsLoading,
-//   getIsFetchingCurrent
-// } from './components/redux/selectors';
-
-
-
-// import { ContactList } from './components/ContactList/ContactList';
-// import { Form } from './components/Form/Form';
-// import { Filter } from './components/Filter/Filter';
-// import css from './components/Form/Form.module.css';
-
 // const HomeView = lazy(() => import('./components/views/HomeView'));
 // const RegisterView = lazy(() => import('./components/views/RegisterView'));
 // const LoginView = lazy(() => import('./components/views/LoginView'));
@@ -36,6 +20,8 @@ import {ContactList} from './components/ContactList/ContactList.jsx';
 
 
 export default function App() {
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
   // const dispatch = useDispatch();
   // const isFetchingCurrentUser = useSelector(
   //   getIsFetchingCurrent,
@@ -46,9 +32,8 @@ export default function App() {
   // }, [dispatch]);
     
   // const error = useSelector(selectError);
-  const isLoggedIn = useSelector(getIsLoggedIn);
   // const restricted = false;
-
+  
   return (
     // !isFetchingCurrentUser &&  (
     //   <div>
@@ -62,14 +47,14 @@ export default function App() {
     //     </section>
     
 <>
-      <AppBar />
       {/* <>
       <PublicRoute  path='/' element={<HomeView />} />
       <PublicRoute  path='/register' element={<RegisterView />} />
       <PublicRoute  path='/login' redirectTo='/contacts' element={<RegisterView />} />
       <PrivateRoute path='/contacts' redirectTo='/login' element={<ContactList />} /> 
-      </> */}
+    </> */}
 
+    <AppBar />
         <Routes>
           <Route path='/' element={ isLoggedIn ? <Navigate to='/' /> : <HomeView /> } />
           <Route path='/register' element={ isLoggedIn ? <Navigate to='/contacts' /> : <RegisterView /> } />
