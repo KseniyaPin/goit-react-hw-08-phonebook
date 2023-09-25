@@ -13,16 +13,7 @@ export const Filter = () => {
     <label>
       Find contacts by name
       <input type="text" value={filter} onChange={handleFilterChange} />
-      {/* <input
-        type="text"
-        value={filter}
-        onChange={evt => dispatch(filterContacts(evt.currentTarget.value))} */}
-      {/* /> */}
     </label>
   );
 };
 
-// Filter.propTypes = {
-//   value: PropTypes.string,
-//   onChange: PropTypes.func,
-// };

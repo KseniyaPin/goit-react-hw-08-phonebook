@@ -19,7 +19,6 @@ export const ContactsView = () => {
   }, [dispatch]);
    
   return (
-    <>
       <div>
          <h1>Phonebook</h1>
          <Form />
@@ -27,11 +26,10 @@ export const ContactsView = () => {
          <section className={css.sectionStyle}>
          <Filter />
           {isLoadingContacts &&  <b>Завантаження контактів...</b>} 
+          <ContactList />
           </section>
       </div>     
           
-      <ContactList />
-    </>
   );
 };
 
