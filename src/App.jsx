@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AppBar from './components/AppBar/App.bar';
-import {getIsLoggedIn, getIsFetchingCurrent} from './components/redux/selectors';
+import {getIsLoggedIn } from './components/redux/selectors';
 
 import HomeView from './components/views/HomeView';
 import RegisterView from './components/views/RegisterView';
@@ -12,7 +12,7 @@ import { fetchCurrentUser} from './components/redux/operations';
 
 export default function App() {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
+  // const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
