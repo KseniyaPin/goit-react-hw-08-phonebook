@@ -1,22 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { selectContacts, selectFilter } from '../redux/selectors';
+import { selectIsLoading, selectContacts, selectFilter } from '../redux/selectors';
 import { fetchContacts, deleteContact } from '../redux/operations';
 
 import { Form } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
 import css from '../Form/Form.module.css';
 
-import { fetchCurrentUser} from '../redux/operations';
+// import { fetchCurrentUser} from '../redux/operations';
 
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(fetchCurrentUser());
-  }, [dispatch]);
+  const isLoadingContacts = useSelector(selectIsLoading);
+  
+  // useEffect(() => {
+  //     dispatch(fetchCurrentUser());
+  // }, [dispatch]);
 
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
@@ -33,13 +34,17 @@ export const ContactList = () => {
   return (
     <>
     
-    !isFetchingCurrentUser &&  (
+    {/* !isFetchingCurrentUser &&  ( */}
       <div>
          <h1>Phonebook</h1>
          <Form />
          <h2>Contacts</h2>
          <section className={css.sectionStyle}>
          <Filter />
+          {isLoadingContacts &&  <b>Завантаження контактів...</b>} 
+          </section>
+      </div>     
+          
         <ul>
         {visibleContacts.map(({ name, number, id }) => {
           return (
@@ -50,11 +55,7 @@ export const ContactList = () => {
           );
         })}
          </ul>
-         {/* {isLoggedIn && !error && <b>Loading contacts...</b>} */}
-         {/* <ContactList /> */}
-        </section>
-      </div>     
-    )
+    {/* ) */}
     </>
   );
 };
