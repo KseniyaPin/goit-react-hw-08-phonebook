@@ -46,7 +46,7 @@ export default function RegisterView() {
 					Password
 					<input type='password' name="password" value={password} onChange={handleChange} />
 				</label>
-				<button type='submit'>Sind Up</button>
+				<button type='submit'>Sign in</button>
 				</form>
 		</div>
 	)

@@ -15,7 +15,7 @@ export default function App() {
       <div>
         <AppBar />
         <Routes>
-          <Route path='/' element={ user?.token ? <Navigate to='/' /> : <HomeView /> } />
+          <Route path='/' element={ <HomeView /> } />
           <Route path='/login' element={ user?.token ? <Navigate to='/contacts' /> : <LoginView /> } />
           <Route path='/register' element={ user?.token ? <Navigate to='/contacts' /> : <RegisterView /> } />
           <Route path='/contacts' element={ user?.token ? <ContactsView />  : <Navigate to='/login' /> } />
@@ -25,3 +25,12 @@ export default function App() {
  ) 
     
 }
+
+<Route path="/" element={<Layout />}>
+<Route index element={<HomePage />} />
+<Route
+  path="/register"
+  element={
+    <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+  }
+/>
