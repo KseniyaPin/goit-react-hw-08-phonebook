@@ -15,11 +15,18 @@ export default function App() {
       <div>
         <AppBar />
         <Routes>
+
+        <Route path="/login" element={user?.token ? <Navigate to="/contacts" /> : <Login />} />
+          <Route path="/register" element={user?.token ? <Navigate to="/contacts" /> : <Register />} />
+          <Route path="/contacts" element={!user?.token ? <Navigate to="/login" /> : <Contacts />} />
+          <Route path="*" element={ user?.token ? ( <Navigate to="/contacts" />  ) : ( <Navigate to="/login" /> )} />
+
+{/*           
           <Route path='/' element={ <LoginView /> } />
           <Route path='/login' element={ user?.token ? <Navigate to='/contacts' /> : <HomeView /> } />
           <Route path='/register' element={ user?.token ? <Navigate to='/contacts' /> : <RegisterView /> } />
           <Route path='/contacts' element={ user?.token ? <ContactsView />  : <Navigate to='/login' /> } />
-          <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <Navigate to='/login' /> } />
+          <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <Navigate to='/login' /> } /> */}
         </Routes>
        </div>
  ) 
