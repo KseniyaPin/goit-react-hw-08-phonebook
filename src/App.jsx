@@ -15,11 +15,11 @@ export default function App() {
       <div>
         <AppBar />
         <Routes>
-          {/* <Route path='/' element={ user?.token ? <Navigate to='/' /> : <HomeView /> } /> */}
+          <Route path='/' element={ user?.token ? <Navigate to='/' /> : <HomeView /> } />
           <Route path='/register' element={ user?.token ? <Navigate to='/contacts' /> : <RegisterView /> } />
           <Route path='/login' element={ user?.token ? <Navigate to='/contacts' /> : <LoginView /> } />
-          <Route path='/contacts' element={ user?.token ?  <ContactsView /> : <Navigate to='/login' /> } />
-          <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <HomeView /> } />
+          <Route path='/contacts' element={ !user?.token ? <Navigate to='/login' /> : <ContactsView /> } />
+          <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <Navigate to='/login' /> } />
         </Routes>
        </div>
  ) 
