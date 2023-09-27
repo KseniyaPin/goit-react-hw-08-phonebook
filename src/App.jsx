@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AppBar from './components/AppBar/App.bar';
 import { getUser } from './components/redux/selectors';
 
-import HomeView from './components/views/HomeView';
+// import HomeView from './components/views/HomeView';
 import RegisterView from './components/views/RegisterView';
 import LoginView from './components/views/LoginView';
 import {ContactsView} from './components/views/ContactsView';
