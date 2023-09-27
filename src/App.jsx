@@ -17,9 +17,9 @@ export default function App() {
         <Routes>
 
         <Route path="/login" element={user?.token ? <Navigate to="/contacts" /> : <LoginView />} />
-          <Route path="/register" element={user?.token ? <Navigate to="/contacts" /> : <RegisterView />} />
-          <Route path="/contacts" element={!user?.token ? <Navigate to="/login" /> : <ContactsView />} />
-          <Route path="*" element={ user?.token ? ( <Navigate to="/contacts" />  ) : ( <Navigate to="/login" /> )} />
+        <Route path="/register" element={user?.token ? <Navigate to="/contacts" /> : <RegisterView />} />
+        <Route path="/contacts" element={!user?.token ? <Navigate to="/login" /> : <ContactsView />} />
+        <Route path="*" element={ user?.token ? ( <Navigate to="/contacts" />  ) : ( <Navigate to="/login" /> )} />
 
 {/*           
           <Route path='/' element={ <LoginView /> } />
