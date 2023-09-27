@@ -19,7 +19,7 @@ export default function App() {
           <Route path='/register' element={ user?.token ? <Navigate to='/contacts' /> : <RegisterView /> } />
           <Route path='/login' element={ user?.token ? <Navigate to='/contacts' /> : <LoginView /> } />
           <Route path='/contacts' element={ <ContactsView /> } />
-          <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <Navigate to='/login' /> } />
+          {/* <Route path='*' element={ user?.token ? <Navigate to='/contacts' /> : <Navigate to='/login' /> } /> */}
         </Routes>
        </div>
  ) 
